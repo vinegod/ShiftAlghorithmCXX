@@ -1,15 +1,11 @@
 #pragma once
 
-#include <cstddef>
+#include <algorithm>
 #include <cstdint>
-#include <iterator>
-#include <type_traits>
-
 #include <string>
+#include <type_traits>
 #include <vector>
 
-#include <algorithm>
-#include <iostream>
 namespace {
 template <typename T, typename _ = void> struct is_container : std::false_type {};
 
