@@ -32,7 +32,7 @@ struct is_container<
  * @param shift_mode 1 for encoding, -1 for decoding
  * @return std::string
  */
-inline std::string shift_elemets(std::vector<std::uint8_t> original_string, std::vector<std::uint8_t> key,
+inline std::string shift_elemets(std::vector<std::uint8_t> original_string, const std::vector<std::uint8_t>& key,
                                  std::int16_t shift_mode) {
 
     const static std::uint8_t english_alphabet_length = 26;
