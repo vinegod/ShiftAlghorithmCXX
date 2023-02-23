@@ -32,7 +32,7 @@ struct is_container<
  * @param shift_mode 1 for encoding, -1 for decoding
  * @return std::string
  */
-inline std::string shift_elemets(std::vector<std::uint8_t> original_string, const std::vector<std::uint8_t>& key,
+inline std::string shift_elemets(std::vector<std::uint8_t> original_string, const std::vector<std::uint8_t> &key,
                                  std::int16_t shift_mode) {
 
     const static std::uint8_t english_alphabet_length = 26;
@@ -52,27 +52,15 @@ inline std::string shift_elemets(std::vector<std::uint8_t> original_string, cons
     return {original_string.begin(), original_string.end()};
 }
 
+} // namespace
+
 /**
  * @brief Removes from text special symbols and makes it lower case.
  *
  * @param text string for transformation
  * @return std::vector<std::uint8_t>
  */
-inline std::vector<std::uint8_t> prepare_text(std::vector<std::uint8_t> &&text) {
-    std::vector<std::uint8_t> result;
-
-    for (const auto &original_char : text) {
-        if (original_char >= 'a' && original_char <= 'z') {
-            result.push_back(original_char);
-        } else if (original_char >= 'A' && original_char <= 'Z') {
-            result.push_back(original_char + 'a' - 'A');
-        }
-    }
-
-    return result;
-}
-
-} // namespace
+std::vector<std::uint8_t> prepare_text(std::vector<std::uint8_t> &&text);
 
 // Forward declaration of Decoder struct to use as friend in Encoder struct
 template <typename Key, std::enable_if_t<is_container<Key>::value, bool> = true,
