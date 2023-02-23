@@ -1,23 +1,34 @@
-#include "shifter.hpp"
-#include <cstdint>
 #include <iostream>
-#include <string>
-#include <vector>
 
-void print(std::string str) {
-    std::cout << str << std::endl;
-    for (const auto &c : std::vector<uint8_t>(str.begin(), str.end())) {
-        std::cout << (uint32_t)c << ' ';
+#include "cli_parser.hpp"
+#include "shifter.hpp"
+
+int main(int argc, char *argv[]) {
+    if (argc == 1) {
+        CLI::print_usage();
+        return 0;
     }
-    std::cout << std::endl;
-}
 
-int main() {
-    auto key_text = std::string("zzzzzz");
-    Encoder<std::string> encoder(key_text);
+    auto parser = CLI::Parser(argc, argv);
+    switch (parser.get_flag()) {
+    case CLI::arguments_e::None: {
+        CLI::print_usage();
+        return 1;
+    }
+    case CLI::arguments_e::Encrypt: {
+        auto encoder = Encoder<std::string>(parser.get_key());
+        auto encoded = encoder(parser.get_word());
+        std::cout << encoded << std::endl;
+        return 0;
+    }
 
-    auto encoded = encoder(std::string("The quick brown fox jumps over the lazy dog"));
-    print(encoded);
-    Decoder<decltype(encoder)::type> decoder(encoder);
-    print(decoder(encoded));
+    case CLI::arguments_e::Decrypt: {
+        auto decoder = Decoder<std::string>(parser.get_key());
+        auto decoded = decoder(parser.get_word());
+        std::cout << decoded << std::endl;
+        return 0;
+    }
+    }
+
+    return 0;
 }
