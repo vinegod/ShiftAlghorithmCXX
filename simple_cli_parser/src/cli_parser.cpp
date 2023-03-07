@@ -25,7 +25,7 @@ void Parser::parse_flags() {
     bool save_next = false;
     bool save_key = false;
 
-    for (auto it = arguments.begin(); it != arguments.end(); it++) {
+    for (auto it = arguments.cbegin(); it != arguments.cend(); it++) {
         if (it->find("--encrypt") != std::string::npos) {
             encrypt_flag = true;
             word = *(it + 1);
