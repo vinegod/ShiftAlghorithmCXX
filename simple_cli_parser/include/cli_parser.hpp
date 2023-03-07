@@ -21,8 +21,8 @@ class Parser {
     void parse_flags();
 
     arg_vector arguments;
-    std::string word;
-    std::string key;
+    std::string word = {};
+    std::string key = {};
     bool decrypt_flag = 0;
     bool encrypt_flag = 0;
 };

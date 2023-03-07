@@ -4,8 +4,7 @@
 
 namespace CLI {
 
-Parser::Parser(int argc, char *argv[]) {
-    arguments = arg_vector(argv, argv + argc);
+Parser::Parser(int argc, char *argv[]) : arguments({argv, argv + argc}) {
     parse_flags();
 }
 
