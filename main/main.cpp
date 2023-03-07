@@ -1,4 +1,5 @@
 #include <iostream>
+#include <string>
 
 #include "cli_parser.hpp"
 #include "shifter.hpp"
@@ -16,14 +17,14 @@ int main(int argc, char *argv[]) {
         return 1;
     }
     case CLI::arguments_e::Encrypt: {
-        auto encoder = Encoder<std::string>(parser.get_key());
+        Encoder<std::string> encoder(parser.get_key());
         auto encoded = encoder(parser.get_word());
         std::cout << encoded << std::endl;
         return 0;
     }
 
     case CLI::arguments_e::Decrypt: {
-        auto decoder = Decoder<std::string>(parser.get_key());
+        Decoder<std::string> decoder{parser.get_key()};
         auto decoded = decoder(parser.get_word());
         std::cout << decoded << std::endl;
         return 0;

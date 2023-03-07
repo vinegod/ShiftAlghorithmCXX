@@ -7,25 +7,25 @@
  */
 TEST(DecoderTests, one_shift) {
     {
-        auto decoder = Decoder<std::string>("b");
+        Decoder<std::string> decoder("b");
         std::string string_to_decode = "b";
         std::string expected_string = "a";
         EXPECT_EQ(decoder(string_to_decode), expected_string);
     }
     {
-        auto decoder = Decoder<std::string>("bbbbbb");
+        Decoder<std::string> decoder("bbbbbb");
         std::string string_to_decode = "b";
         std::string expected_string = "a";
         EXPECT_EQ(decoder(string_to_decode), expected_string);
     }
     {
-        auto decoder = Decoder<std::string>("b");
+        Decoder<std::string> decoder("b");
         std::string string_to_decode = "bbbbbb";
         std::string expected_string = "aaaaaa";
         EXPECT_EQ(decoder(string_to_decode), expected_string);
     }
     {
-        auto decoder = Decoder<std::string>("b");
+        Decoder<std::string> decoder("b");
         std::string string_to_decode = "bcdefgh";
         std::string expected_string = "abcdefg";
         EXPECT_EQ(decoder(string_to_decode), expected_string);
@@ -37,25 +37,25 @@ TEST(DecoderTests, one_shift) {
  */
 TEST(DecoderTests, caesar_shift) {
     {
-        auto decoder = Decoder<std::string>("d");
+        Decoder<std::string> decoder("d");
         std::string string_to_decode = "d";
         std::string expected_string = "a";
         EXPECT_EQ(decoder(string_to_decode), expected_string);
     }
     {
-        auto decoder = Decoder<std::string>("dddddd");
+        Decoder<std::string> decoder("dddddd");
         std::string string_to_decode = "d";
         std::string expected_string = "a";
         EXPECT_EQ(decoder(string_to_decode), expected_string);
     }
     {
-        auto decoder = Decoder<std::string>("d");
+        Decoder<std::string> decoder("d");
         std::string string_to_decode = "dddddd";
         std::string expected_string = "aaaaaa";
         EXPECT_EQ(decoder(string_to_decode), expected_string);
     }
     {
-        auto decoder = Decoder<std::string>("d");
+        Decoder<std::string> decoder("d");
         std::string string_to_decode = "defghij";
         std::string expected_string = "abcdefg";
         EXPECT_EQ(decoder(string_to_decode), expected_string);
@@ -67,7 +67,7 @@ TEST(DecoderTests, caesar_shift) {
  */
 TEST(DecoderTests, Vigenere) {
     {
-        auto decoder = Decoder<std::string>("lion");
+        Decoder<std::string> decoder("lion");
         std::string string_to_decode = "epsdfqqxmzcjynckucacdwjrcbvrwinlowu";
         std::string expected_string = "thequickbrownfoxjumpsoverthelazydog";
         EXPECT_EQ(decoder(string_to_decode), expected_string);

@@ -4,28 +4,28 @@
 
 TEST(AlgorithmTests, simple_shift) {
     {
-        auto encoder = Encoder<std::string>("b");
+        Encoder<std::string> encoder("b");
         Decoder<decltype(encoder)::type> decoder(encoder);
         const std::string original_string = "thequickbrownfoxjumpsoverthelazydog";
         auto encoded = encoder(original_string);
         EXPECT_EQ(decoder(encoded), original_string);
     }
     {
-        auto encoder = Encoder<std::string>("b");
+        Encoder<std::string> encoder("b");
         Decoder<decltype(encoder)::type> decoder(encoder);
         const std::string original_string = "thequickbrownfoxjumpsoverthelazydog";
         auto encoded = encoder(original_string);
         EXPECT_EQ(decoder(encoded), original_string);
     }
     {
-        auto encoder = Encoder<std::string>("d");
+        Encoder<std::string> encoder("d");
         Decoder<decltype(encoder)::type> decoder(encoder);
         const std::string original_string = "thequickbrownfoxjumpsoverthelazydog";
         auto encoded = encoder(original_string);
         EXPECT_EQ(decoder(encoded), original_string);
     }
     {
-        auto encoder = Encoder<std::string>("b");
+        Encoder<std::string> encoder("b");
         Decoder<decltype(encoder)::type> decoder(encoder);
         const std::string original_string = "thequickbrownfoxjumpsoverthelazydog";
         auto encoded = encoder(original_string);
@@ -35,7 +35,7 @@ TEST(AlgorithmTests, simple_shift) {
 
 TEST(AlgorithmTests, text_preparation_with_shift) {
     {
-        auto encoder = Encoder<std::string>("b");
+        Encoder<std::string> encoder("b");
         Decoder<decltype(encoder)::type> decoder(encoder);
 
         const std::string original_string = "The quick brown fox jumps over the lazy dog.";
@@ -45,7 +45,7 @@ TEST(AlgorithmTests, text_preparation_with_shift) {
         EXPECT_EQ(decoder(encoded), expected_string);
     }
     {
-        auto encoder = Encoder<std::string>("b");
+        Encoder<std::string> encoder("b");
         Decoder<decltype(encoder)::type> decoder(encoder);
 
         const std::string original_string = "The quick brown fox jumps over the lazy dog.";
@@ -55,7 +55,7 @@ TEST(AlgorithmTests, text_preparation_with_shift) {
         EXPECT_EQ(decoder(encoded), expected_string);
     }
     {
-        auto encoder = Encoder<std::string>("d");
+        Encoder<std::string> encoder("d");
         Decoder<decltype(encoder)::type> decoder(encoder);
         const std::string original_string = "The quick brown fox jumps over the lazy dog.";
         const std::string expected_string = "thequickbrownfoxjumpsoverthelazydog";
@@ -64,7 +64,7 @@ TEST(AlgorithmTests, text_preparation_with_shift) {
         EXPECT_EQ(decoder(encoded), expected_string);
     }
     {
-        auto encoder = Encoder<std::string>("b");
+        Encoder<std::string> encoder("b");
         Decoder<decltype(encoder)::type> decoder(encoder);
 
         const std::string original_string = "The quick brown fox jumps over the lazy dog.";
@@ -77,28 +77,28 @@ TEST(AlgorithmTests, text_preparation_with_shift) {
 
 TEST(AlgorithmTests, Vigenere) {
     {
-        auto encoder = Encoder<std::string>("badas");
+        Encoder<std::string> encoder("badas");
         Decoder<decltype(encoder)::type> decoder(encoder);
         const std::string original_string = "thequickbrownfoxjumpsoverthelazydog";
         auto encoded = encoder(original_string);
         EXPECT_EQ(decoder(encoded), original_string);
     }
     {
-        auto encoder = Encoder<std::string>("key");
+        Encoder<std::string> encoder("key");
         Decoder<decltype(encoder)::type> decoder(encoder);
         const std::string original_string = "thequickbrownfoxjumpsoverthelazydog";
         auto encoded = encoder(original_string);
         EXPECT_EQ(decoder(encoded), original_string);
     }
     {
-        auto encoder = Encoder<std::string>("LION");
+        Encoder<std::string> encoder("LION");
         Decoder<decltype(encoder)::type> decoder(encoder);
         const std::string original_string = "thequickbrownfoxjumpsoverthelazydog";
         auto encoded = encoder(original_string);
         EXPECT_EQ(decoder(encoded), original_string);
     }
     {
-        auto encoder = Encoder<std::string>("thequickbrownfoxjumpsoverthelazydog");
+        Encoder<std::string> encoder("thequickbrownfoxjumpsoverthelazydog");
         Decoder<decltype(encoder)::type> decoder(encoder);
         const std::string original_string = "thequickbrownfoxjumpsoverthelazydog";
         auto encoded = encoder(original_string);
@@ -108,7 +108,7 @@ TEST(AlgorithmTests, Vigenere) {
 
 TEST(AlgorithmTests, text_preparation_with_vigenere) {
     {
-        auto encoder = Encoder<std::string>("badas");
+        Encoder<std::string> encoder("badas");
         Decoder<decltype(encoder)::type> decoder(encoder);
 
         const std::string original_string = "The quick brown fox jumps over the lazy dog.";
@@ -118,7 +118,7 @@ TEST(AlgorithmTests, text_preparation_with_vigenere) {
         EXPECT_EQ(decoder(encoded), expected_string);
     }
     {
-        auto encoder = Encoder<std::string>("LION");
+        Encoder<std::string> encoder("LION");
         Decoder<decltype(encoder)::type> decoder(encoder);
 
         const std::string original_string = "The quick brown fox jumps over the lazy dog.";
@@ -128,7 +128,7 @@ TEST(AlgorithmTests, text_preparation_with_vigenere) {
         EXPECT_EQ(decoder(encoded), expected_string);
     }
     {
-        auto encoder = Encoder<std::string>("KEY");
+        Encoder<std::string> encoder("KEY");
         Decoder<decltype(encoder)::type> decoder(encoder);
         const std::string original_string = "The quick brown fox jumps over the lazy dog.";
         const std::string expected_string = "thequickbrownfoxjumpsoverthelazydog";
@@ -137,7 +137,7 @@ TEST(AlgorithmTests, text_preparation_with_vigenere) {
         EXPECT_EQ(decoder(encoded), expected_string);
     }
     {
-        auto encoder = Encoder<std::string>("thequickbrownfoxjumpsoverthelazydog");
+        Encoder<std::string> encoder("thequickbrownfoxjumpsoverthelazydog");
         Decoder<decltype(encoder)::type> decoder(encoder);
 
         const std::string original_string = "The quick brown fox jumps over the lazy dog.";

@@ -7,25 +7,25 @@
  */
 TEST(EncoderTests, one_shift) {
     {
-        auto encoder = Encoder<std::string>("b");
+        Encoder<std::string> encoder("b");
         std::string string_to_encode = "a";
         std::string expected_string = "b";
         EXPECT_EQ(encoder(string_to_encode), expected_string);
     }
     {
-        auto encoder = Encoder<std::string>("bbbbbb");
+        Encoder<std::string> encoder("bbbbbb");
         std::string string_to_encode = "a";
         std::string expected_string = "b";
         EXPECT_EQ(encoder(string_to_encode), expected_string);
     }
     {
-        auto encoder = Encoder<std::string>("b");
+        Encoder<std::string> encoder("b");
         std::string string_to_encode = "aaaaaa";
         std::string expected_string = "bbbbbb";
         EXPECT_EQ(encoder(string_to_encode), expected_string);
     }
     {
-        auto encoder = Encoder<std::string>("b");
+        Encoder<std::string> encoder("b");
         std::string string_to_encode = "abcdefg";
         std::string expected_string = "bcdefgh";
         EXPECT_EQ(encoder(string_to_encode), expected_string);
@@ -37,25 +37,25 @@ TEST(EncoderTests, one_shift) {
  */
 TEST(EncoderTests, caesar_shift) {
     {
-        auto encoder = Encoder<std::string>("d");
+        Encoder<std::string> encoder("d");
         std::string string_to_encode = "a";
         std::string expected_string = "d";
         EXPECT_EQ(encoder(string_to_encode), expected_string);
     }
     {
-        auto encoder = Encoder<std::string>("dddddd");
+        Encoder<std::string> encoder("dddddd");
         std::string string_to_encode = "a";
         std::string expected_string = "d";
         EXPECT_EQ(encoder(string_to_encode), expected_string);
     }
     {
-        auto encoder = Encoder<std::string>("d");
+        Encoder<std::string> encoder("d");
         std::string string_to_encode = "aaaaaa";
         std::string expected_string = "dddddd";
         EXPECT_EQ(encoder(string_to_encode), expected_string);
     }
     {
-        auto encoder = Encoder<std::string>("d");
+        Encoder<std::string> encoder("d");
         std::string string_to_encode = "abcdefg";
         std::string expected_string = "defghij";
         EXPECT_EQ(encoder(string_to_encode), expected_string);
@@ -67,7 +67,7 @@ TEST(EncoderTests, caesar_shift) {
  */
 TEST(EncoderTests, Vigenere) {
     {
-        auto encoder = Encoder<std::string>("lion");
+        Encoder<std::string> encoder("lion");
         std::string string_to_encode = "thequickbrownfoxjumpsoverthelazydog";
         std::string expected_string = "epsdfqqxmzcjynckucacdwjrcbvrwinlowu";
         EXPECT_EQ(encoder(string_to_encode), expected_string);
