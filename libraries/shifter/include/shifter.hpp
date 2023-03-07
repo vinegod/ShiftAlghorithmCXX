@@ -72,11 +72,11 @@ template <typename Key, CoderMode Mode,
             std::enable_if_t<std::is_integral<typename Key::value_type>::value, bool> = true>
 struct Coder {
     using type = Key;
-    Coder(const Key &key) : m_key{prepare_text({key.begin(), key.end()})} {};
-    Coder(Key &&key) : m_key{prepare_text({key.begin(), key.end()})} {};
+    explicit Coder(const Key &key) : m_key{prepare_text({key.begin(), key.end()})} {};
+    explicit Coder(Key &&key) : m_key{prepare_text({key.begin(), key.end()})} {};
 
-    Coder(const Coder<Key, CoderMode::Encoder> &coder) : m_key{coder.m_key} {};
-    Coder(const Coder<Key, CoderMode::Decoder> &coder) : m_key{coder.m_key} {};
+    explicit Coder(const Coder<Key, CoderMode::Encoder> &coder) : m_key{coder.m_key} {};
+    explicit Coder(const Coder<Key, CoderMode::Decoder> &coder) : m_key{coder.m_key} {};
 
 
     /**

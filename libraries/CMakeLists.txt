@@ -1,0 +1,2 @@
+add_subdirectory(shifter)
+add_subdirectory(simple_cli_parser)
